@@ -13,12 +13,33 @@ class Share extends Component {
     } 
     return style;
   }
-
+  
   render() {
     return (
       <div style={this.getStyle()}>
-        {this.props.share.isin}
-        <button onClick={this.props.deleteShare.bind(this, this.props.share.isin)} style={btnStyle}>x</button>
+        <div className='grid-share'>
+          <div className='grid-share__item1'>
+            {this.props.share.name} <br />
+            {this.props.share.isin}
+          </div>
+          <div className='grid-share__item2'>
+            {this.props.share.shares}
+          </div>
+          <div className='grid-share__item3'>
+            {Math.round(((this.props.share.purchasePrice * this.props.share.shares) + Number.EPSILON) * 100) / 100} <br />
+            {this.props.share.purchasePrice}
+          </div>
+          <div className='grid-share__item4'>
+            {Math.round(((this.props.share.currentPrice * this.props.share.shares) + Number.EPSILON) * 100) / 100} <br />
+            {this.props.share.currentPrice}
+          </div>
+          <div className='grid-share__item5'>
+
+          </div>
+          <div className='grid-share__item6'>
+          <button onClick={this.props.deleteShare.bind(this, this.props.share.isin)} style={btnStyle}>x</button>
+          </div>
+        </div>
       </div>
     )
   }

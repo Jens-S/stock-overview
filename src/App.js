@@ -32,12 +32,16 @@ class App extends Component {
     this.setState({ shares: [...this.state.shares.filter(share => share.isin !== isin)] });
   }
 
+  addShare = (isin, newShares, purchasePrice) => {
+    this.setState({ shares: [...this.state.shares, { isin, shares: newShares, purchasePrice }] });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="container">
           <Header />
-          <AddShare />
+          <AddShare addShare={this.addShare}/>
           <Shares shares={this.state.shares} deleteShare={this.deleteShare} />
         </div>
       </div>
